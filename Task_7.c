@@ -34,15 +34,31 @@ int Read_list(FILE* data, int number, Student** list){
     array = (Student*)malloc(number*sizeof(Student));
     for (int i= 0 ; i < number; i++){
         fscanf(data, "%s", &name);
+        if (name[0]<'A' || name[0]>'Z'){
+            printf("Wrong format\n");
+            exit(1);
+        }
         strcpy(array[i].Name, name);
         fscanf(data, "%s", &name);
+        if (name[0]<'A' || name[0]>'Z'){
+            printf("Wrong format\n");
+            exit(1);
+        }
         strcat(array[i].Name, " ");
         strcat(array[i].Name, name);
 
         fscanf(data, "%d", &group);
-        fscanf(data, "%lf", &rating);
-
+        if (group<100 || group>1000){
+            printf("Wrong format\n");
+            exit(2);
+        }
         array[i].Group = group;
+
+        fscanf(data, "%lf", &rating);
+        if (rating>10.0){
+            printf("Wrong format\n");
+            exit(3);
+        }
         array[i].Rating = rating;
     }
     for (int i = 0; i < number; i++){
@@ -75,7 +91,7 @@ int Check_rating(int* check, int number, const double R, Student** list){
 
 int Check_student(int* check, int number1, int number2, Student** list1, Student** list2){
     int flag;
-    int flagok;
+    int flajok;
     for (int i=0; i<number2; i++){
         for (int j=0; j<number1; j++){
             flag=0;
@@ -83,13 +99,13 @@ int Check_student(int* check, int number1, int number2, Student** list1, Student
                     flag++;
             }
             else{
-                flagok=0;
+                flajok=0;
                 for(int h=0; h<strlen(list1[j]->Name); h++){
                     if(list1[j]->Name[h] == list2[i]->Name[h]){
-                        flagok++;
+                        flajok++;
                     }
                 }
-                if(flagok!=strlen(list1[j]->Name)){
+                if(flajok!=strlen(list1[j]->Name)){
                     flag++;
                 }
 
