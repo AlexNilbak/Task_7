@@ -1,0 +1,15 @@
+Pierre Bezukhov 123 7.6
+Andrey Bolkonsky 122 8.6
+Natasha Rostova 123 4.4
+Anna Karenina 121 7.8
+Stiva Oblonsky 122 3.8
+Konstantin Levin 125 8.3
+Ilya Oblomov 123 5.3
+Andrey Stoltz 122 9.2
+Rodion Raskolnikov 124 7.5
+Sonya Marmeladova 124 5.6
+Eugene Onegin 121 3.2
+Tatyana Larina 121 6.4
+Vladimir Lensky 121 8.0
+Eugene Bazarov 125 8.8
+

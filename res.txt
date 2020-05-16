@@ -1,0 +1,3 @@
+Eugene Bazarov 125 8.800000
+Anna Karenina 121 7.800000
+Taras Bulba 126 3.600000
