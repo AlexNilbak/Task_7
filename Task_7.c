@@ -153,10 +153,46 @@ int main(void){
 
 
     number1=Get_number(students);
+    if (number1==0){
+        printf("There are no students\n");
+        return -1;
+    }
     list1=(Student**)malloc(number1*sizeof(Student*));
     p=Read_list(students, number1, list1);
 
     number2=Get_number(deduct);
+    if (number2==0){
+        check=(int*)malloc(number1*sizeof(int));
+        for (int i=0; i<number1; i++){
+        check[i]=0;
+        }
+        p=Check_rating(check, number1, R, list1);
+        p=0;
+        for (int i=0; i<number1; i++){
+            if (check[i]==0){
+                check[i]++;
+                p++;
+            }
+            else{
+                check[i]=0;
+            }
+        }
+        if(p>0){
+            printf("Some students should be deducted...\n");
+            Write_list(res, check, number1, list1);
+            fclose(students);
+            fclose(deduct);
+            fclose(res);
+            return 0;
+        }
+        else{
+            printf("All the data is correct\n");
+            fclose(students);
+            fclose(deduct);
+            fclose(res);
+            return 0;
+        }
+    }
     list2=(Student**)malloc(number2*sizeof(Student*));
     p=Read_list(deduct, number2, list2);
 
