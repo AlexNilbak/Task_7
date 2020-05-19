@@ -32,6 +32,10 @@ int Read_list(FILE* data, int number, Student** list){
     char name[256];
     double rating;
     array = (Student*)malloc(number*sizeof(Student));
+    if(!array){
+        printf("Cannot allocate memory");
+        exit(3);
+    }
     for (int i= 0 ; i < number; i++){
         fscanf(data, "%s", &name);
         if (name[0]<'A' || name[0]>'Z'){
@@ -100,7 +104,7 @@ int Check_student(int* check, int number1, int number2, Student** list1, Student
             }
             else{
                 flajok=0;
-                for(int h=0; h<strlen(list1[j]->Name); h++){
+                for(size_t h=0; h<strlen(list1[j]->Name); h++){
                     if(list1[j]->Name[h] == list2[i]->Name[h]){
                         flajok++;
                     }
@@ -158,11 +162,19 @@ int main(void){
         return -1;
     }
     list1=(Student**)malloc(number1*sizeof(Student*));
+    if(!list1){
+        printf("Cannot allocate memory");
+        exit(3);
+    }
     p=Read_list(students, number1, list1);
 
     number2=Get_number(deduct);
     if (number2==0){
         check=(int*)malloc(number1*sizeof(int));
+        if(!check){
+            printf("Cannot allocate memory");
+            exit(3);
+        }
         for (int i=0; i<number1; i++){
         check[i]=0;
         }
@@ -194,9 +206,17 @@ int main(void){
         }
     }
     list2=(Student**)malloc(number2*sizeof(Student*));
+    if(!list2){
+        printf("Cannot allocate memory");
+        exit(3);
+    }
     p=Read_list(deduct, number2, list2);
 
     check=(int*)malloc(number2*sizeof(int));
+    if(!check){
+        printf("Cannot allocate memory");
+        exit(3);
+    }
     for (int i=0; i<number2; i++){
         check[i]=0;
     }
